@@ -28,6 +28,8 @@ def run_module():
     if module.check_mode:
         module.exit_json(**result)
 
+##### This is start of original Python-code. >>>>
+
     #Set default content for REST
     payload={}
     headers = {}
@@ -53,6 +55,8 @@ def run_module():
     cards = requests.request("GET", urldraw, headers=headers, data=payload)
     cards1 = json.loads(cards.text)
     
+#### Original Python-code ends here. Other is for Ansible <<<<<<<<<<<
+
     #Set JSON to result for Ansible output
     result = cards1
     
