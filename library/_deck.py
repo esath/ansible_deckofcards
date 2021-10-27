@@ -3,15 +3,15 @@
 import requests
 import json
 
-#from ansible.module_utils.basic import *
 from ansible.module_utils.basic import AnsibleModule
 
 def run_module():
-
+    
+    #Set count variable linked to ansible-playbook
     module_args = dict(
         count=dict(type='str', required=True),
     )
-
+    #Set default results to return when module code exits
     result = dict(
         changed=False,
         original_message='',
@@ -19,6 +19,7 @@ def run_module():
         my_useful_info={},
     )
 
+    #Enable check-only mode
     module = AnsibleModule(
         argument_spec=module_args,
         supports_check_mode=True
@@ -51,17 +52,12 @@ def run_module():
     #make request for n cards and save result to variable:
     cards = requests.request("GET", urldraw, headers=headers, data=payload)
     cards1 = json.loads(cards.text)
-
+    
+    #Set JSON to result for Ansible output
     result = cards1
-
-    #Make pretty list of cards you got in JSON-format:
-#    n=0
-#    while n<count:
-#            print(cards1["cards"][n]["value"],
-#                    cards1["cards"][n]["suit"])
-#            n = n + 1
-
-    #module.exit_json(changed=False, meta=response)
+    
+    # in the event of a successful module execution, you will want to
+    # simple AnsibleModule.exit_json(), passing the key/value results
     module.exit_json(**result)
 
 def main():
