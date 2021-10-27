@@ -1,0 +1,13 @@
+- hosts: localhost
+  gather_facts: false
+
+  vars:
+    card_count: "2"
+
+  tasks:
+    - name: Pick no of random cards from deck
+      deck:
+        count: "{{ card_count }}"
+      register: result
+
+    - debug: var=result
