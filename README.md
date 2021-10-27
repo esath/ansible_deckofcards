@@ -15,3 +15,5 @@ Module is is in library folder and Ansible-playbook is deck.yml.
 Ansible is is launched with extra-parameter 'card_count' to give you random cards.
 
 $ ansible-playbook deck.yml -e "card_count=3"
+-
+Details for module: https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_general.html
