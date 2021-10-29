@@ -16,7 +16,6 @@ urlshuffle = "https://deckofcardsapi.com/api/deck/"+deckid+"/shuffle/"
 shuffle = requests.request("GET", urlshuffle, headers=headers, data=payload)
 
 #Ask how many cards you want and put count-number to request uri
-#You need to change integer to string in url!
 count = input("How many cards you want?")
 urldraw = "https://deckofcardsapi.com/api/deck/"+deckid+"/draw/?count=" + count
 count = int(count)
@@ -29,5 +28,5 @@ cards1 = json.loads(cards.text)
 n=0
 while n<count:
         print(cards1["cards"][n]["value"],
-                cards1["cards"][n]["suit"])
+              cards1["cards"][n]["suit"])
         n = n + 1
