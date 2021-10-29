@@ -44,9 +44,7 @@ def run_module():
     urlshuffle = "https://deckofcardsapi.com/api/deck/"+deckid+"/shuffle/"
     shuffle = requests.request("GET", urlshuffle, headers=headers, data=payload)
 
-    #Ask how many cards you want and put count-number to request uri
-    #You need to change integer to string in url!
-    #count = input("How many cards you want?")
+    #Set card count and put count-number to request uri
     count = module.params['count']
     urldraw = "https://deckofcardsapi.com/api/deck/"+deckid+"/draw/?count=" + count
     count = int(count)
@@ -57,7 +55,7 @@ def run_module():
     
 #### Original Python-code ends here. Other is for Ansible <<<<<<<<<<<
 
-    #Set JSON to result for Ansible output
+    #Set JSON-content to result for Ansible output
     result = cards1
     
     # in the event of a successful module execution, you will want to
